@@ -98,7 +98,7 @@ export default class ProfileScreen extends Component {
             uid: key
           })); 
 
-          // set the fav drink array to the converted list of items
+          // set the people array to the converted list of items
           this.setState({
             peopleList: peopleObjects
           });                 
@@ -129,7 +129,6 @@ export default class ProfileScreen extends Component {
             data={this.state.peopleList}
             renderItem={({item, index}) =>
 
-              // each card has a delayed animation; data passed from parent to child component
               <Animatable.View animation="fadeIn" delay={100 * index} useNativeDriver={true}>
                 <ContactCard           
                   deleteFunction={() => {this.deletePerson(item.uid, item.personName)}}
@@ -141,7 +140,7 @@ export default class ProfileScreen extends Component {
               </Animatable.View>        
 
             }
-            // this gives each card an unique key
+            
             keyExtractor={({id}, index) => index.toString()}
           />      
 

@@ -17,8 +17,8 @@ export default class FormButton extends Component {
     return (
 
         // when user clicks button, navigate to specific screen in stack navigation
-        <TouchableHighlight onPress={this.props.navigationPath} style={style.backgroundContainer}>
-            <View style={[style.buttonContainer, {backgroundColor: this.props.backgroundColor}]}>
+        <TouchableHighlight onPress={this.props.navigationPath} style={[style.backgroundContainer, {height: this.props.height}]}>
+            <View style={[style.buttonContainer, {backgroundColor: this.props.backgroundColor, height: this.props.height}]}>
                 <View style={style.iconContainer}>
                     <Ionicons name={this.props.iconImage} size={32} color="#FFF"/>
                 </View>                
@@ -42,8 +42,7 @@ export default class FormButton extends Component {
 const style = StyleSheet.create({
 
     // button background
-    backgroundContainer: {
-        height: 100, 
+    backgroundContainer: { 
         width: "100%"
     }, 
 
@@ -53,7 +52,6 @@ const style = StyleSheet.create({
         display: "flex", 
         flexDirection: "row", 
         justifyContent: "flex-start", 
-        height: 100, 
         width: "100%"
     },   
 

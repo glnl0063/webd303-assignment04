@@ -2,11 +2,10 @@
 import React, {Component} from "react";
 
 // import specific components from react native 
-import {ScrollView, SafeAreaView, StyleSheet} from "react-native";
+import {Dimensions, ScrollView, SafeAreaView, StyleSheet} from "react-native";
 
 // import custom components from component folder 
 import FormCategoryButton from "../components/FormCategoryButton";
-import FormInstructions from "../components/FormInstructions";
 
 // import constants - provides system information (deviceName, platform & model, statusBarHeight, systemFonts, etc.)
 import Constants from "expo-constants";
@@ -15,7 +14,8 @@ import Constants from "expo-constants";
 import * as Animatable from "react-native-animatable";
 
 
-/* HOMESCREEN */
+
+/* FORM SCREEN  */
 export default class HomeScreen extends Component {
 
     render() {
@@ -25,11 +25,10 @@ export default class HomeScreen extends Component {
      
       <SafeAreaView style={style.container}>
         <ScrollView>
-            
-            <FormInstructions/>
 
             <Animatable.View animation="fadeInLeftBig" delay={100 * 1} useNativeDriver={true}>
                 <FormCategoryButton
+                    height={Dimensions.get('screen').height/3}
                     navigationPath={() => {this.props.navigation.navigate("AppointmentForm"); }}
                     iconImage="ios-time"
                     categoryName="Appointments"
@@ -39,6 +38,7 @@ export default class HomeScreen extends Component {
 
             <Animatable.View animation="fadeInLeftBig" delay={100 * 2} useNativeDriver={true}>
                 <FormCategoryButton
+                    height={Dimensions.get('screen').height/3}                
                     navigationPath={() => {this.props.navigation.navigate("MedicationForm"); }}
                     iconImage="md-medkit"
                     categoryName="Medications"
@@ -48,6 +48,7 @@ export default class HomeScreen extends Component {
 
             <Animatable.View animation="fadeInLeftBig" delay={100 * 3} useNativeDriver={true}>
                 <FormCategoryButton
+                    height={Dimensions.get('screen').height/3}                
                     navigationPath={() => {this.props.navigation.navigate("PeopleForm"); }}
                     iconImage="ios-people"
                     categoryName="People"

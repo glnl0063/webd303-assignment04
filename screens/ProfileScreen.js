@@ -27,7 +27,6 @@ export default class ProfileScreen extends Component {
             
             <Animatable.View animation="fadeIn" delay={100 * 1} useNativeDriver={true}>
                 <CategoryButton
-                    // pass props to child component to make beer category button
                     navigationPath={() => {this.props.navigation.navigate("AppointmentScreen"); }}
                     iconImage="ios-time"
                     categoryName="Appointments"
@@ -37,7 +36,6 @@ export default class ProfileScreen extends Component {
 
             <Animatable.View animation="fadeIn" delay={100 * 2} useNativeDriver={true}>
                 <CategoryButton
-                    // pass props to child component to make cocktails category button
                     navigationPath={() => {this.props.navigation.navigate("MedicationScreen"); }}
                     iconImage="md-medkit"
                     categoryName="Medications"
@@ -47,7 +45,6 @@ export default class ProfileScreen extends Component {
 
             <Animatable.View animation="fadeIn" delay={100 * 3} useNativeDriver={true}>
                 <CategoryButton
-                    // pass props to child component to make cocktails category button
                     navigationPath={() => {this.props.navigation.navigate("PeopleScreen"); }}
                     iconImage="ios-people"
                     categoryName="People"

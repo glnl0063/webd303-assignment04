@@ -106,7 +106,7 @@ export default class AppointmentScreen extends Component {
         // if there is nothing in the real time database
         } else {
           
-          // set the people array to empty
+          // set the appointment array to empty
           this.setState({
             appointmentList: []
           });            
@@ -121,8 +121,7 @@ export default class AppointmentScreen extends Component {
 
     // return the following
     return (
-
-      // pass data from parent to child component (VerticalRestaurantCard.js)          
+         
       <SafeAreaView style={style.container}>
         <ScrollView>
 
@@ -130,13 +129,12 @@ export default class AppointmentScreen extends Component {
             data={this.state.appointmentList}
             renderItem={({item, index}) =>
 
-              // each card has a delayed animation; data passed from parent to child component
               <Animatable.View animation="fadeIn" delay={100 * index} useNativeDriver={true}>
                 <AppointmentCard           
                   deleteFunction={() => {this.deleteAppointment(item.uid, item.doctorName)}}
                   appointmentId={item.uid}
                   docName={item.doctorName}
-                  appointmentDate={Date(item.doctorDate).toLocaleString()}
+                  appointmentDate={item.doctorDate}
                   appointmentTime={item.doctorTime}
                   appointmentLoc={item.doctorLocation}
                   appointmentType={item.appointmentType}                                    

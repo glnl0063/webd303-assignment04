@@ -5,7 +5,7 @@ import React, {Component} from "react";
 import {SafeAreaView, ScrollView, StyleSheet} from "react-native";
 
 // // import custom components from component folder 
-import ContactCard from "../components/ContactCard";
+import CalendarAppointment from "../components/CalendarAppointment";
 
 // import flat list icon from gesture handler library
 import {FlatList} from "react-native-gesture-handler";
@@ -59,7 +59,7 @@ export default class CalendarScreen extends Component {
           uid: key
         })); 
 
-        // set the fav drink array to the converted list of items
+        // set the appointment array to the converted list of items
         this.setState({
           appointmentList: appointmentObjects
         });                 
@@ -67,7 +67,7 @@ export default class CalendarScreen extends Component {
       // if there is nothing in the real time database
       } else {
         
-        // set the people array to empty
+        // set the appointment array to empty
         this.setState({
           appointmentList: []
         });            
@@ -94,7 +94,7 @@ export default class CalendarScreen extends Component {
           uid: key
         })); 
 
-        // set the fav drink array to the converted list of items
+        // set the calendar array to the converted list of items
         this.setState({
           calendarList: calendarObjects
         });                 
@@ -102,7 +102,7 @@ export default class CalendarScreen extends Component {
       // if there is nothing in the real time database
       } else {
         
-        // set the people array to empty
+        // set the calendar array to empty
         this.setState({
           calendarList: {}
         });            
@@ -117,18 +117,12 @@ export default class CalendarScreen extends Component {
 
     // return the following
     return (
-
-      // pass data from parent to child component (VerticalRestaurantCard.js)          
+         
       <SafeAreaView style={style.container}>
+
         <Calendar
-          // handler which gets executed on day press. Default = undefined
-          onDayPress={(day) => {console.log('selected day', day)}}
-          // handler which gets executed on day long press. Default = undefined
-          onDayLongPress={(day) => {console.log('selected day', day)}}
           // calendar title (http://arshaw.com/xdate/#Formatting)
           monthFormat={'MMMM yyyy'}
-          // handler which gets executed when visible month changes in calendar
-          onMonthChange={(month) => {console.log('month changed', month)}}
           // hide other days from other months
           hideExtraDays={true}
           // set the beginning of the week to start on Sunday
@@ -144,12 +138,12 @@ export default class CalendarScreen extends Component {
             textSectionTitleColor: '#b6c1cd',
             selectedDayBackgroundColor: '#00adf5',
             selectedDayTextColor: '#ffffff',
-            todayTextColor: '#28c794',
+            todayTextColor: '#666690',
             dayTextColor: '#2d4150',
             textDisabledColor: '#d9e1e8',
             dotColor: '#00adf5',
             selectedDotColor: '#ffffff',
-            arrowColor: '#28c794',
+            arrowColor: '#666690',
             monthTextColor: '#2d4150',
             indicatorColor: '#2d4150',
             textMonthFontWeight: 'bold',
@@ -165,23 +159,24 @@ export default class CalendarScreen extends Component {
             data={this.state.appointmentList}
             renderItem={({item, index}) =>
 
-              // each card has a delayed animation; data passed from parent to child component
-              <Animatable.View animation="fadeInUp" delay={100 * index} useNativeDriver={true}>
-                <ContactCard           
+              <Animatable.View animation="fadeIn" delay={100 * index} useNativeDriver={true}>
+                <CalendarAppointment           
                   deleteFunction={() => {this.deleteAppointment(item.uid, item.doctorName)}}
-                  personId={item.uid}
-                  personImage={item.doctorName}
-                  personName={item.doctorDate}
-                  personRelation={item.doctorLocation}
+                  appointmentId={item.uid}
+                  appointmentDate={item.doctorDate}
+                  appointmentTime={item.doctorTime}
+                  appointmentLoc={item.doctorLocation}
+                  appointmentType={item.appointmentType}
+                  cardColor={item.appointmentColor}                                    
                 />
               </Animatable.View>        
 
             }
-            // this gives each card an unique key
             keyExtractor={index => index.toString()}
           />      
 
         </ScrollView>
+        
       </SafeAreaView>
 
     );

@@ -2,7 +2,7 @@
 import React, {Component} from "react";
 
 // import specific components from react native 
-import {Picker, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableHighlight, View} from "react-native";
+import {Picker, SafeAreaView, ScrollView, StyleSheet, Text, View} from "react-native";
 
 // import custom components from component folder 
 import DateInput from "../components/DateInput"; 
@@ -53,6 +53,7 @@ export default class AppointmentForm extends Component {
         appointmentType: docType, 
         doctorDate: docDate, 
         doctorTime: docTime, 
+        appointmentColor: calendarColor
       });
 
       // push data into firebase database for calendar
@@ -118,22 +119,22 @@ export default class AppointmentForm extends Component {
     if (val == "Family Doctor") { 
       this.setState({
         docType: "Family Doctor",
-        calendarColor: "#A7E0A3"
+        calendarColor: "#4e6e6e"
       }); 
     } else if (val == "Dentist") { 
       this.setState({
         docType: "Dentist",          
-        calendarColor: "#FC975C"
+        calendarColor: "#4e4e6e"
       }); 
     } else if (val == "Hospital") { 
       this.setState({
         docType: "Hospital",          
-        calendarColor: "#FFCE5C"
+        calendarColor: "#6e4e4e"
       }); 
     } else { 
       this.setState({ 
         docType: "Specialist",          
-        calendarColor: "#5cbec7"
+        calendarColor: "#6e6e4e"
       }); 
     }   
   }  
